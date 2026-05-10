@@ -66,22 +66,3 @@ frontend/  Vue 3 + Pinia
 | POST | `/api/league/simulate/all`  | Sezonu sonuna kadar oynat |
 | PUT  | `/api/league/fixtures/{id}` | Bir macin skorunu guncelle |
 
-## Ayarlar
-
-`backend/.env` icine:
-
-```
-LEAGUE_PREDICTION_ITERATIONS=10000   # Monte Carlo iterasyonu
-LEAGUE_PREDICTION_CACHE_ENABLED=true
-LEAGUE_PREDICTION_CACHE_TTL=600
-```
-
-Cache `database` driver ile calisiyor; istersen Redis'e cevirip ayni keyleri kullanir.
-
-## Notlar
-
-- Fikstur 4 takim icin klasik UEFA grup formati: ilk 3 hafta round-robin,
-  son 3 hafta rovans (H4=H3, H5=H2, H6=H1) ve ev/dep mumkun oldugunca alternate.
-- Skor uretimi takim gucu uzerinden Poisson dagilimina dayaniyor; zayif takimin
-  da kazanma sansi var ama dusuk olasilikta.
-- Sampiyonluk yuzdeleri sadece son 3 haftada gosteriliyor.
